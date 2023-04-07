@@ -25,7 +25,8 @@
       "@/store/*": ["store/*"],
       "@/screens/*": ["screens/*"],
       "@/utils/*": ["utils/*"],
-      "@/UI/*": ["components/UI"]
+      "@/UI/*": ["components/UI"],
+      "@/styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
