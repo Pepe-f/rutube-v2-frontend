@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { GoSearch } from 'react-icons/go'
 
+import VideoItem from '@/components/VideoItem/VideoItem'
+
 import { useSearch } from '@/hooks/useSearch'
 
 import styles from './Search.module.scss'
@@ -22,7 +24,7 @@ const Search: FC = () => {
       {isSuccess && (
         <div className={styles.result}>
           {data?.length ? (
-            data.map(video => <div key={video.id}>{video.name}</div>)
+            data.map(video => <VideoItem key={video.id} item={video} />)
           ) : (
             <div className='text-white'>Видео не найдены!</div>
           )}
