@@ -1,8 +1,8 @@
-import { NextPage } from 'next'
+import { NextPageAuth } from '@/providers/private-route.interface'
 
 import Home from '@/screens/Home/Home'
 
-const HomePage: NextPage = () => {
+const HomePage: NextPageAuth = () => {
   return <Home />
 }
 
