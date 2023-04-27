@@ -7,6 +7,8 @@ import { validEmail } from '@/components/AuthForm/auth.validation'
 import Button from '@/components/UI/Button/Button'
 import Field from '@/components/UI/Field/Field'
 
+import { useActions } from '@/hooks/useActions'
+import { useAuth } from '@/hooks/useAuth'
 import { useClickOutside } from '@/hooks/useClickOutside'
 
 import stylesIconsRight from '../IconsRight/IconsRight.module.scss'
@@ -18,7 +20,9 @@ const AuthForm: FC = () => {
 
   const [type, setType] = useState<'login' | 'register'>('login')
 
-  // const {isLoading} = useAuth()
+  const { login, register: registerAction } = useActions()
+
+  const { isLoading } = useAuth()
 
   const {
     register,
@@ -29,8 +33,11 @@ const AuthForm: FC = () => {
   })
 
   const onSubmit: SubmitHandler<IAuthFields> = data => {
-    // if (type === 'login')
-    // else if (type === 'register')
+    if (type === 'login') {
+      login(data)
+    } else if (type === 'register') {
+      registerAction(data)
+    }
   }
 
   return (
@@ -67,11 +74,14 @@ const AuthForm: FC = () => {
             type='password'
           />
           <div className='mt-5 mb-1 text-center'>
-            <Button onClick={() => setType('login')}>Войти</Button>
+            <Button onClick={() => setType('login')} disabled={isLoading}>
+              Войти
+            </Button>
           </div>
           <button
             className={styles.register}
             onClick={() => setType('register')}
+            disabled={isLoading}
           >
             Регистрация
           </button>
