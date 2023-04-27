@@ -25,6 +25,13 @@ export const apiRtk = createApi({
     getProfile: builder.query<IUser, any>({
       query: () => '/user/profile',
       providesTags: () => [{ type: 'Profile' }]
+    }),
+    subscribeToChannel: builder.mutation<boolean, number>({
+      query: channelId => ({
+        url: `/user/subscribe/${channelId}`,
+        method: 'PATCH'
+      }),
+      invalidatesTags: () => [{ type: 'Profile' }]
     })
   })
 })
