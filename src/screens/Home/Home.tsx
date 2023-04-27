@@ -6,17 +6,17 @@ import Layout from '@/components/Layout/Layout'
 
 import { IVideo } from '@/types/video.interface'
 
-interface HomeProps {
+export interface HomeProps {
   randomVideo: IVideo
   topVideo: IVideo
   newVideos: IVideo[]
 }
 
-const Home: FC = () => {
+const Home: FC<HomeProps> = ({ newVideos, randomVideo, topVideo }) => {
   return (
     <Layout title='Rutube v2 | Главная'>
-      <Discover />
-      <Catalog />
+      <Discover topVideo={topVideo} randomVideo={randomVideo} />
+      <Catalog newVideos={newVideos} />
     </Layout>
   )
 }

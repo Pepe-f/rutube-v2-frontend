@@ -7,6 +7,6 @@ export const VideoService = {
     return api.get<IVideo[]>('/video')
   },
   async getMostPopular() {
-    return api.get<IVideo>('/video/most-popular')
+    return api.get<IVideo[]>('/video/most-popular')
   }
 }
