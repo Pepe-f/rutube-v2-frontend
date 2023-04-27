@@ -4,7 +4,7 @@ import { apiRtk } from '@/store/api/api'
 
 export const videoApi = apiRtk.injectEndpoints({
   endpoints: builder => ({
-    getVideosBySearchTerm: builder.query<IVideo, string>({
+    getVideosBySearchTerm: builder.query<IVideo[], string>({
       query: searchTerm => ({ url: '/video/all', params: { searchTerm } })
     }),
     getVideoById: builder.query<IVideo, number>({
