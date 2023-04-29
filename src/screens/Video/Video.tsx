@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
+import Comments from '@/components/Comments/Comments'
 import Layout from '@/components/Layout/Layout'
 import VideoPlayer from '@/components/VideoPlayer/VideoPlayer'
 
@@ -29,7 +30,7 @@ const Video: FC = () => {
     <Layout title={video.name}>
       <div className={styles.layout}>
         <VideoPlayer videoPath={video.videoPath} />
-        <div></div>
+        <Comments videoId={video.id} comments={video.comments || []} />
       </div>
       <div className={cn(styles.layout, 'mt-7')}></div>
     </Layout>
